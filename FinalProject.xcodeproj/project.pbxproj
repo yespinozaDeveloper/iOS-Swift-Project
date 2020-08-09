@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A05577424DFB7360020EAC7 /* App.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A05577324DFB7360020EAC7 /* App.storyboard */; };
+		0A05577624DFCE2E0020EAC7 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A05577524DFCE2E0020EAC7 /* TabViewController.swift */; };
 		0A49CB5D24DEE8AE008BD762 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A49CB5C24DEE8AE008BD762 /* AppDelegate.swift */; };
 		0A49CB5F24DEE8AE008BD762 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A49CB5E24DEE8AE008BD762 /* SceneDelegate.swift */; };
 		0A49CB6124DEE8AE008BD762 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A49CB6024DEE8AE008BD762 /* ViewController.swift */; };
@@ -16,7 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A49CB5924DEE8AE008BD762 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A05577324DFB7360020EAC7 /* App.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = App.storyboard; sourceTree = "<group>"; };
+		0A05577524DFCE2E0020EAC7 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		0A49CB5924DEE8AE008BD762 /* One Smile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "One Smile.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A49CB5C24DEE8AE008BD762 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A49CB5E24DEE8AE008BD762 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A49CB6024DEE8AE008BD762 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +41,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A05576F24DF99DD0020EAC7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0A49CB6224DEE8AE008BD762 /* Main.storyboard */,
+				0A49CB6724DEE8B2008BD762 /* LaunchScreen.storyboard */,
+				0A05577324DFB7360020EAC7 /* App.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0A05577024DF9EB50020EAC7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A49CB6024DEE8AE008BD762 /* ViewController.swift */,
+				0A05577524DFCE2E0020EAC7 /* TabViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		0A49CB5024DEE8AE008BD762 = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +71,7 @@
 		0A49CB5A24DEE8AE008BD762 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A49CB5924DEE8AE008BD762 /* FinalProject.app */,
+				0A49CB5924DEE8AE008BD762 /* One Smile.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,12 +79,11 @@
 		0A49CB5B24DEE8AE008BD762 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				0A05577024DF9EB50020EAC7 /* ViewController */,
+				0A05576F24DF99DD0020EAC7 /* View */,
 				0A49CB5C24DEE8AE008BD762 /* AppDelegate.swift */,
 				0A49CB5E24DEE8AE008BD762 /* SceneDelegate.swift */,
-				0A49CB6024DEE8AE008BD762 /* ViewController.swift */,
-				0A49CB6224DEE8AE008BD762 /* Main.storyboard */,
 				0A49CB6524DEE8B2008BD762 /* Assets.xcassets */,
-				0A49CB6724DEE8B2008BD762 /* LaunchScreen.storyboard */,
 				0A49CB6A24DEE8B2008BD762 /* Info.plist */,
 			);
 			path = FinalProject;
@@ -84,7 +106,7 @@
 			);
 			name = FinalProject;
 			productName = FinalProject;
-			productReference = 0A49CB5924DEE8AE008BD762 /* FinalProject.app */;
+			productReference = 0A49CB5924DEE8AE008BD762 /* One Smile.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,6 +148,7 @@
 			files = (
 				0A49CB6924DEE8B2008BD762 /* LaunchScreen.storyboard in Resources */,
 				0A49CB6624DEE8B2008BD762 /* Assets.xcassets in Resources */,
+				0A05577424DFB7360020EAC7 /* App.storyboard in Resources */,
 				0A49CB6424DEE8AE008BD762 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A05577624DFCE2E0020EAC7 /* TabViewController.swift in Sources */,
 				0A49CB6124DEE8AE008BD762 /* ViewController.swift in Sources */,
 				0A49CB5D24DEE8AE008BD762 /* AppDelegate.swift in Sources */,
 				0A49CB5F24DEE8AE008BD762 /* SceneDelegate.swift in Sources */,
@@ -291,7 +315,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TNS.FinalProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "One Smile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -309,7 +333,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = TNS.FinalProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "One Smile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
