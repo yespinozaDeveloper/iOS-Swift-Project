@@ -2,12 +2,12 @@
 //  ViewController.swift
 //  FinalProject
 //
-//  Created by MacBookDesarrolloTecno on 8/8/20.
+//  Created by yespinoza on 2020/08/08
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: AppBaseController {
 
     @IBOutlet weak var txtUsername: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -17,11 +17,27 @@ class ViewController: UIViewController {
     }
 
     @IBAction func actionLogin(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "App", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(identifier: "TabController")
-        viewController.modalPresentationStyle = .overCurrentContext
-        viewController.modalTransitionStyle = .crossDissolve
-        present(viewController, animated: true, completion: nil)
+        var message:String = ""
+        
+        if txtUsername.text == ""
+        {
+            message = ConstantUtil.UserRequiredMessage
+        }
+        else if txtPassword.text == ""
+        {
+            message = ConstantUtil.PasswordRequiredMessage
+        }
+        
+        if message != "" {
+            showInfoAlert(message)
+        }
+        else{
+            txtUsername.text = ""
+            txtPassword.text = ""
+            showLoader()
+            setCurrentUser(User.init(UserName: "yespinoza", Email: "yespinoza@tecnosys.net", Image: ConstantUtil.defaultImage))
+            goHome()
+        }
     }
     
 }

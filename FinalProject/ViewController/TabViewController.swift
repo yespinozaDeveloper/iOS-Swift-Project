@@ -1,8 +1,8 @@
 //
-//  TabViewController.swift
+//  ViewController.swift
 //  FinalProject
 //
-//  Created by MacBookDesarrolloTecno on 8/9/20.
+//  Created by yespinoza on 2020/08/09
 //
 
 import UIKit
