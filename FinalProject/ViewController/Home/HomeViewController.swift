@@ -13,6 +13,17 @@ class HomeViewController : AppBaseController{
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
     
+    override func viewDidLoad() {        
+        imgProfile.layer.borderWidth = 1.0
+        imgProfile.layer.masksToBounds = false
+        imgProfile.layer.borderColor = UIColor.white.cgColor
+        imgProfile.layer.cornerRadius = imgProfile.frame.size.width / 2
+        imgProfile.clipsToBounds = true
+        lblUserName.text = getCurrentUser().UserName
+        lblEmail.text = getCurrentUser().Email
+        imgProfile.image = getCurrentUser().getUImage() ?? imgProfile.image
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         lblUserName.text = getCurrentUser().UserName
         lblEmail.text = getCurrentUser().Email
@@ -23,6 +34,7 @@ class HomeViewController : AppBaseController{
         logout()
     }
     @IBAction func actionAppointment(_ sender: Any) {
+        goToAppointment()
     }
     @IBAction func actionHistory(_ sender: Any) {
         tabBarController?.selectedIndex = 0

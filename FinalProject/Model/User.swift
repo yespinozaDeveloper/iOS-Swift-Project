@@ -13,14 +13,12 @@ struct User : Codable{
     var UserName:String
     var Email:String
     var Image:String?
-    
 
     func getUImage() -> UIImage?{
-        do{
-            let dataDecoded:NSData = NSData(base64Encoded: Image!, options: NSData.Base64DecodingOptions(rawValue: 0))!
-            return UIImage(data: dataDecoded as Data)!
-        }catch{
-            return nil
-        }
+        return ImageUtil.DecodeBase64Image(imageBase64: self.Image)
+    }
+
+    mutating func setUImage(image:UIImage?){
+        self.Image = ImageUtil.EncodeBase64Image(image: image)
     }
 }

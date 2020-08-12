@@ -28,7 +28,11 @@ class AppBaseController: UIViewController {
     }
     
     func goHome(){
-        goTo("App", identifier: "TabController")
+        goTo("Home", identifier: "TabController")
+    }
+    
+    func goToAppointment(){
+        goTo("Appointment", identifier: "AppointmentViewController")
     }
     
     func goTo(_ storyBoard:String, identifier:String){
@@ -37,9 +41,26 @@ class AppBaseController: UIViewController {
         let viewController = storyBoard.instantiateViewController(identifier: identifier)
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
-        dismissLoader({ self.dismiss(animated: false)
+        dismissLoader({ //self.dismiss(animated: false)
                         self.present(viewController, animated: true, completion: nil)})
-        
+    }
+    
+    func goToPopup(_ storyBoard:String, identifier:String){
+        dismissKeyboard()
+        let storyBoard = UIStoryboard(name: storyBoard, bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: identifier)
+        dismissLoader({ //self.dismiss(animated: false)
+                        self.present(viewController, animated: true, completion: nil)})
+    }
+    
+    func goToWithNavController(_ storyBoard:String, identifier:String){
+        dismissKeyboard()
+                
+       let storyBoard = UIStoryboard(name: storyBoard, bundle: nil)
+       let viewController = storyBoard.instantiateViewController(identifier: identifier)
+        let navController = UINavigationController(rootViewController: viewController)
+       dismissLoader({ //self.dismiss(animated: false)
+                       self.navigationController?.present(navController, animated: true, completion: nil)})
     }
     
     func showLoader(){
