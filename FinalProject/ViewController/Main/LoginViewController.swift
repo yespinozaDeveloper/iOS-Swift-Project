@@ -32,6 +32,7 @@ class LoginViewController: AppBaseController {
             showInfoAlert(message)
         }
         else{
+            //TODO - Call service
             txtUsername.text = ""
             txtPassword.text = ""
             showLoader()
