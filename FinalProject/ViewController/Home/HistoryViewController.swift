@@ -13,6 +13,11 @@ class HistoryViewController: AppBaseController {
     @IBAction func actionBtnLogout(_ sender: Any) {
         logout()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()        
+        //TODO - Call service
+    }
 }
 
 extension HistoryViewController: UITableViewDataSource, UITableViewDelegate{

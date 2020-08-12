@@ -14,7 +14,6 @@ class ChangePasswordViewController : AppBaseController {
     @IBOutlet weak var txtNewPassword2: UITextField!
     
     @IBAction func actionChangePassword(_ sender: Any) {
-        //TODO - Crear lógica de Cambiar Contraseña
         var tittle:String?
         var message:String = ""
         if txtCurrentPassword.text == ""
@@ -58,6 +57,7 @@ class ChangePasswordViewController : AppBaseController {
     func changePassword(){
         showLoader()
         print("Change password...")
+        //TODO - Call service
         dismissLoader({
             self.clearForm()
             self.showInfoAlert(ConstantUtil.SuccessPasswordChange)

@@ -28,6 +28,7 @@ class AppointmentViewController : AppBaseController{
     
     func deleteAppointment(){
         showLoader()
+        //TODO - Call service
         dismissLoader({self.showInfoAlert(ConstantUtil.SuccessAppointmentDelete)
             self.refresh()
         })

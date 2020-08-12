@@ -72,6 +72,7 @@ class SettingsViewController: AppBaseController {
     
     func openCamera(){
         print("Camera...")
+        //TODO - Fix camera problem
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -82,18 +83,12 @@ class SettingsViewController: AppBaseController {
         else {
             showInfoAlert(ConstantUtil.CameraUnavailableTittle, message: ConstantUtil.CameraUnavailableMessage)
         }
-        /*
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        self.present(imagePicker, animated: true, completion: nil)
-        self.dismissKey()
-         */
     }
     
     func uploadUser(){
         showLoader()
         print("Save Email...")
+        //TODO - Call service
         dismissLoader({
             var currentUser:User = self.getCurrentUser()
             currentUser.Email = self.txtEmail.text!
