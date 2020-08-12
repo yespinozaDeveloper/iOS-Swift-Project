@@ -13,12 +13,19 @@ class SettingsViewController: AppBaseController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var imgProfile: UIImageView!
     var ImageHasChanged:Bool!
+    var IsTakingPhoto:Bool!
     
     override func viewDidAppear(_ animated: Bool) {
-        lblUserName.text = getCurrentUser().UserName
-        txtEmail.text = getCurrentUser().Email
-        imgProfile.image = getCurrentUser().getUImage() ?? imgProfile.image
-        ImageHasChanged = false
+        if IsTakingPhoto == nil {
+            self.IsTakingPhoto = false
+        }
+        if  !IsTakingPhoto!{
+            lblUserName.text = getCurrentUser().UserName
+            txtEmail.text = getCurrentUser().Email
+            imgProfile.image = getCurrentUser().getUImage() ?? imgProfile.image
+            ImageHasChanged = false
+        }
+        IsTakingPhoto = false
     }
     
     @IBAction func actionBtnLogout(_ sender: Any) {
@@ -69,7 +76,7 @@ class SettingsViewController: AppBaseController {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
             imagePicker.sourceType = .camera;
-            imagePicker.allowsEditing = false
+            imagePicker.allowsEditing = true
             self.present(imagePicker, animated: true, completion: nil)
         }
         else {
@@ -103,9 +110,12 @@ class SettingsViewController: AppBaseController {
 
 extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        ImageHasChanged = true;
-        let selectedImage:UIImage? = info[.editedImage] as? UIImage
-        imgProfile.image = selectedImage
+        IsTakingPhoto = true
+        ImageHasChanged = true
+        if let selectedImage:UIImage? = info[.editedImage] as? UIImage
+        {
+            imgProfile.image = selectedImage
+        }
         picker.dismiss(animated: true, completion: nil)
         
     }

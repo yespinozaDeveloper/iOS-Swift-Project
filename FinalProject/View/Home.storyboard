@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -193,10 +193,15 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="cFs-bX-19M" userLabel="Profe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-2b-VK4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PFh-2b-VK4">
                                 <rect key="frame" x="0.0" y="200" width="414" height="613"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" rowHeight="170" id="jf5-yU-Ptt" customClass="HistoryCell" customModule="One_Smile" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="170"/>
@@ -208,17 +213,18 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E41-MM-DEu">
                                                     <rect key="frame" x="25" y="16" width="46.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Hut-yu-CXl">
                                                     <rect key="frame" x="25" y="42" width="364" height="112"/>
-                                                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="backgroundColor" red="0.9546068311" green="0.9546068311" blue="0.9720847011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Hut-yu-CXl" secondAttribute="trailing" constant="5" id="9bd-Il-Vdz"/>
                                                 <constraint firstItem="Hut-yu-CXl" firstAttribute="top" secondItem="qHP-oJ-xpD" secondAttribute="topMargin" constant="31" id="NQW-yx-kKW"/>
@@ -228,6 +234,7 @@
                                                 <constraint firstItem="Hut-yu-CXl" firstAttribute="leading" secondItem="qHP-oJ-xpD" secondAttribute="leadingMargin" constant="5" id="lB6-bb-4bK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <accessibility key="accessibilityConfiguration" identifier="HistoryCell"/>
                                         <connections>
                                             <outlet property="lblDate" destination="E41-MM-DEu" id="gbi-E3-bru"/>
@@ -264,7 +271,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cFs-bX-19M" firstAttribute="trailing" secondItem="OfV-bE-bQY" secondAttribute="trailing" id="50t-1x-TOj"/>
                             <constraint firstItem="aws-n5-RUt" firstAttribute="centerX" secondItem="g8h-NU-HUi" secondAttribute="centerX" id="BKd-eH-ut2"/>
@@ -402,12 +409,14 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="1xL-am-maW">
                                 <rect key="frame" x="20" y="438.5" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.9546068311" green="0.9546068311" blue="0.9720847011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="3X9-Mo-oyx"/>
                                     <constraint firstAttribute="height" constant="50" id="AaB-s0-Kfv"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="spn-fF-cxr"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="yOI-jF-ZDH"/>
                                 </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="password"/>
                             </textField>
@@ -500,6 +509,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="8bS-OU-qXj">
                                 <rect key="frame" x="20" y="235" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.95810431240000005" green="0.95810431240000005" blue="0.97557741399999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="GIE-9P-BvO"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Sdg-J2-Glq"/>
@@ -507,6 +517,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="dUZ-qv-xsx"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="t5S-Or-PhL"/>
                                 </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -521,6 +532,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="LsQ-mv-oSt">
                                 <rect key="frame" x="20" y="340" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.96509641410000002" green="0.96509641410000002" blue="0.98255997900000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="QYs-VH-WIP"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="VHb-5p-lee"/>
@@ -529,6 +541,7 @@
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="boy-kz-1HJ"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="mif-F1-3jm"/>
                                 </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -543,6 +556,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lsl-QK-Wkr">
                                 <rect key="frame" x="20" y="445" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.96160084010000002" green="0.96160084010000002" blue="0.97906917329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="4pT-Qb-Ajv"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8YL-sU-EK2"/>
@@ -552,6 +566,7 @@
                                     <constraint firstAttribute="height" constant="50" id="pIh-JF-lFd"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="wKq-Nm-ARG"/>
                                 </constraints>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -649,7 +664,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gkd-oH-G7S"/>
+        <segue reference="8BB-AO-2ae"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.uturn.right.square" catalog="system" width="128" height="114"/>
