@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  FinalProject
 //
-//  Created by MacBookDesarrolloTecno on 8/8/20.
+//  Created by yespinoza on 8/8/20.
 //
 
 import UIKit

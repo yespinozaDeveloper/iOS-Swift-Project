@@ -55,13 +55,9 @@ class ChangePasswordViewController : AppBaseController {
     }
     
     func changePassword(){
+        print("UI => [Change Password] => SUCCESS")
         showLoader()
-        print("Change password...")
-        //TODO - Call service
-        dismissLoader({
-            self.clearForm()
-            self.showInfoAlert(ConstantUtil.SuccessPasswordChange)
-        })
+        UserRepository.changePassword(getCurrentUser().UserName, currentPassword: txtCurrentPassword.text, newPassword: txtNewPassword.text, userProtocol: self)
     }
     
     func clearForm(){
@@ -69,4 +65,21 @@ class ChangePasswordViewController : AppBaseController {
         txtNewPassword.text = ""
         txtNewPassword2.text = ""
     }
+}
+
+extension ChangePasswordViewController: UserProtocol{
+    func onSuccess(_ user: User?) {
+        print("UI => [Change Password] => SUCCESS")
+        dismissLoader({
+            self.clearForm()
+            self.showInfoAlert(ConstantUtil.SuccessPasswordChange)
+        })
+    }
+    
+    func onError() {
+        print("UI => [Change Password] => ERROR")
+        dismissLoader({self.showDefaultError()})
+    }
+    
+    
 }

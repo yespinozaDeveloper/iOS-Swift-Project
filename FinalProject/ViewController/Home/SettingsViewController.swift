@@ -62,7 +62,7 @@ class SettingsViewController: AppBaseController {
     }
     
     func openGallery(){
-        print("Gallery...")
+        print("UI => Open Gallery...")
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -71,7 +71,7 @@ class SettingsViewController: AppBaseController {
     }
     
     func openCamera(){
-        print("Camera...")
+        print("UI => Open Camera...")
         //TODO - Fix camera problem
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
@@ -86,28 +86,48 @@ class SettingsViewController: AppBaseController {
     }
     
     func uploadUser(){
+        print("UI => [Update User]")
         showLoader()
-        print("Save Email...")
-        //TODO - Call service
-        dismissLoader({
-            var currentUser:User = self.getCurrentUser()
-            currentUser.Email = self.txtEmail.text!
-            if self.ImageHasChanged {
-                currentUser.setUImage(image: self.imgProfile.image)
-            }
-            self.setCurrentUser(currentUser)
-            self.showInfoAlert(ConstantUtil.SuccessUserUpdate)
-        })
+        CacheDataUtil.UserCache = self.getCurrentUser()
+        if let email =  self.txtEmail.text {
+            CacheDataUtil.UserCache.Email = email
+        }
+        if ImageHasChanged{
+            CacheDataUtil.UserCache.setUImage(image: imgProfile.image)
+        }
+        UserRepository.update(CacheDataUtil.UserCache, hasImageChanged: ImageHasChanged, userProtocol: self)
+        
     }
 }
 
+extension SettingsViewController: UserProtocol{
+    func onSuccess(_ user: User?) {
+            print("UI => [Update User] => SUCCESS")
+        dismissLoader({
+            guard let user = user else{
+                self.showDefaultError()
+                return
+            }
+            self.setCurrentUser(user)
+            self.showInfoAlert(ConstantUtil.SuccessUserUpdate)
+        })
+    }
+    
+    func onError() {
+        print("UI => [Update User] => ERROR")
+        CacheDataUtil.UserCache = getCurrentUser()
+        dismissLoader({self.showDefaultError()})
+    }
+    
+    
+}
 
 
 extension SettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         IsTakingPhoto = true
         ImageHasChanged = true
-        if let selectedImage:UIImage? = info[.editedImage] as? UIImage
+        if let selectedImage:UIImage = info[.editedImage] as? UIImage
         {
             imgProfile.image = selectedImage
         }

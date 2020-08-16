@@ -52,18 +52,14 @@ class CreateUserViewController: AppBaseController {
             showInfoAlert(title, message:message)
         }
         else{
-            createUser()
+            createUser(userName: txtUsername.text, password: txtPassword.text, email: txtEmail.text)
         }
     }
     
-    func createUser(){
-        print("Create user...")
-        //TODO - Call service
+    func createUser(userName: String?, password: String?, email: String?) {
+        print("UI => [Create User]")
         showLoader()
-        dismissLoader({
-            self.clearForm()
-            self.showInfoAlert(ConstantUtil.SuccessUserCreate)
-        })
+        UserRepository.create(userName, password: password, email: email, userProtocol: self)
     }
     
     func clearForm(){
@@ -72,4 +68,23 @@ class CreateUserViewController: AppBaseController {
         txtPassword.text = ""
         txtPassword2.text = ""
     }
+}
+
+extension CreateUserViewController:UserProtocol{
+    
+    func onSuccess(_ user: User?) {
+        print("UI => [Create User] => SUCCESS")
+        dismissLoader({
+            self.clearForm()
+            self.showInfoAlert(ConstantUtil.SuccessUserCreate)
+        })
+    }
+    
+    func onError() {
+        print("UI => [Create User] => ERROR")
+        dismissLoader({
+            self.showDefaultError()
+        })
+    }
+    
 }

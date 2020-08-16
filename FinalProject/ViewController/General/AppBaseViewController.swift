@@ -45,6 +45,35 @@ class AppBaseController: UIViewController {
                         self.present(viewController, animated: true, completion: nil)})
     }
     
+    func goToNavView(_ storyBoard:String, identifier:String){
+        dismissKeyboard()
+        let storyBoard = UIStoryboard(name: storyBoard, bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: identifier)
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        dismissLoader({ //self.dismiss(animated: false)
+                        self.present(viewController, animated: true, completion: nil)})
+    }
+    
+    func goTo(_ viewController:UIViewController){
+        dismissKeyboard()
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        dismissLoader({ //self.dismiss(animated: false)
+                        self.present(viewController, animated: true, completion: nil)})
+    }
+    
+    func goToPopup(_ viewController:UIViewController){
+        dismissKeyboard()
+        dismissLoader({ //self.dismiss(animated: false)
+                        self.present(viewController, animated: true, completion: nil)})
+    }
+    
+    func getViewController<D:UIViewController>(_ storyBoard:String, identifier:String) -> D{
+        let storyBoard = UIStoryboard(name: storyBoard, bundle: nil)
+        return storyBoard.instantiateViewController(identifier: identifier) as! D
+    }
+    
     func goToPopup(_ storyBoard:String, identifier:String){
         dismissKeyboard()
         let storyBoard = UIStoryboard(name: storyBoard, bundle: nil)
@@ -83,11 +112,16 @@ class AppBaseController: UIViewController {
     }
     
     func setCurrentUser(_ user:User){
-        AppBaseController.currentUser = user
+        AppBaseController.currentUser = user        
+        CacheDataUtil.UserCache = user
     }
     
     func getCurrentUser() -> User{
         return AppBaseController.currentUser!
+    }
+    
+    func showDefaultError(){
+        showInfoAlert(ConstantUtil.ErrorDefaultTitle, message: ConstantUtil.ErrorDefaultMessage)
     }
     
     func showInfoAlert(_ message:String){

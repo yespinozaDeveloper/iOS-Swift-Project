@@ -21,4 +21,12 @@ struct User : Codable{
     mutating func setUImage(image:UIImage?){
         self.Image = ImageUtil.EncodeBase64Image(image: image)
     }
+    
+    func getParameters(_ hasImageChanged:Bool) -> [String:AnyObject]{
+        if hasImageChanged {
+            return ["user":UserName as AnyObject,"email":Email as AnyObject, "image":Image as AnyObject]
+        }else{
+            return ["user":UserName as AnyObject,"email":Email as AnyObject]
+        }
+    }
 }

@@ -10,9 +10,23 @@ import UIKit
 class AppointmentViewController : AppBaseController{
     
     @IBOutlet weak var tableView: UITableView!
+    var appointmentList:[Appointment] = []
+    var indexRow:Int = -1
     
     override func viewDidLoad() {
-      super.viewDidLoad()
+        super.viewDidLoad()
+        getAppointments()        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func handleSwipes(_ sender:UISwipeGestureRecognizer)
+    {
+        actionBtnBack(sender)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
     }
     
     @IBAction func actionBtnLogout(_ sender: Any) {
@@ -23,22 +37,59 @@ class AppointmentViewController : AppBaseController{
     }
     
     @IBAction func actionBtnAddAppointment(_ sender: Any) {
-        goToPopup("Appointment", identifier: "MaintenanceViewController")
+        let viewController:MaintenanceViewController = getViewController("Appointment", identifier: "MaintenanceViewController")
+        viewController.delegate = self
+        goToPopup(viewController)
     }
     
-    func deleteAppointment(){
+    func getAppointments(){
+        print("UI => [Fetch Appointments]")
         showLoader()
-        //TODO - Call service
-        dismissLoader({self.showInfoAlert(ConstantUtil.SuccessAppointmentDelete)
+        AppointmentRepository.getAll(getCurrentUser().UserName, _protocol: self)
+    }
+    
+    func deleteAppointment(_ indexRow:Int){
+        self.indexRow = indexRow
+        showLoader()
+        AppointmentRepository.delete(getCurrentUser().UserName, appointmentDate: self.appointmentList[indexRow].AppointmentDate, _protocol: self)
+    }
+}
+
+extension AppointmentViewController: AppointmentProtocol{
+    func onUpdateSuccess() {
+        getAppointments()
+    }
+    
+    func onSuccess() {
+        print("UI => [Delete Appointment] => SUCCESS")
+        dismissLoader({
+            self.showInfoAlert(ConstantUtil.SuccessAppointmentDelete)
+            self.appointmentList.remove(at: self.indexRow)
+            self.indexRow = -1
             self.refresh()
         })
     }
+    
+    func onSuccess(_ data: [Appointment]) {
+        print("UI => [Fetch Appointments] => SUCCESS")
+        dismissLoader({
+            self.appointmentList = data
+            self.refresh()
+        })
+    }
+    
+    func onError() {
+        print("UI => [Appointment] => Error")
+        dismissLoader({self.showDefaultError()})
+    }
+    
+    
 }
 
 
 extension AppointmentViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        15
+        appointmentList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,45 +98,30 @@ extension AppointmentViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         self.showConfirmAlert(ConstantUtil.DeleteAppointmentTittle, message: ConstantUtil.DeleteAppointmentConfirmationMessage,
-                              acceptButton: ConstantUtil.DeleteOption, acceptHandler: {_ in self.deleteAppointment()})
+                              acceptButton: ConstantUtil.DeleteOption, acceptHandler: {_ in self.deleteAppointment(indexPath.row)})
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:AppointmentCell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
         
-        let date = Date()
-        let dateEdited = Calendar.current.date(byAdding: .month, value: -indexPath.row, to: date)
-        let formatter = DateFormatter()
-        formatter.dateFormat = ConstantUtil.HistoryDateFormat
-
-        if let dateEdited = dateEdited{
-            cell.lblDate.text = formatter.string(from: dateEdited)
-            cell.lblType.text = "Monthly Control"
-            cell.lblPlace.text = "Alajuela"
-        }
+        let item = appointmentList[indexPath.row]
+        cell.lblDate.text = item.AppointmentDate
+        cell.lblType.text = item.Reason
+        cell.lblPlace.text = item.Place
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let storyBoard = UIStoryboard(name: "Appointment", bundle: nil)
-         let viewController = storyBoard.instantiateViewController(identifier: "MaintenanceViewController") as! MaintenanceViewController
+        let storyBoard = UIStoryboard(name: "Appointment", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(identifier: "MaintenanceViewController") as! MaintenanceViewController
         
-        let date = Date()
-        let dateEdited = Calendar.current.date(byAdding: .month, value: -indexPath.row, to: date)
-        let formatter = DateFormatter()
-        formatter.dateFormat = ConstantUtil.HistoryDateFormat
-        if let dateEdited = dateEdited{
-            var appointmentDate:String = formatter.string(from: dateEdited)
-            viewController.SelectedAppointment = Appointment.init(AppointmentDate: formatter.date(from: appointmentDate) ?? date, Place: "Monthly Control", Reason: "Alajuela")
-         dismissLoader({ self.present(viewController, animated: true, completion: nil)})
-        }
+        viewController.SelectedAppointment = appointmentList[indexPath.row]
+        dismissLoader({ self.present(viewController, animated: true, completion: nil)})
     }
     
     func refresh(){
         print("REFRESCAR")
         self.tableView.reloadData()
     }
-    
-    
 }

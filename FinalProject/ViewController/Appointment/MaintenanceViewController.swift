@@ -13,15 +13,17 @@ class MaintenanceViewController: AppBaseController {
     @IBOutlet weak var actionBtnLocation: UIButton!
     @IBOutlet weak var txtReason: UITextView!
     var SelectedAppointment:Appointment?
+    var delegate:AppointmentProtocol?
     
     override func viewDidLoad() {
         if let appointment = SelectedAppointment{
-            datePicker.date = appointment.AppointmentDate
+
+            datePicker.date = appointment.getDate()
             txtReason.text = appointment.Reason
             actionBtnLocation.setTitle(appointment.Place, for: .normal)
-            if appointment.AppointmentDate < Date.init()
+            if appointment.getDate() < Date.init()
             {
-                datePicker.minimumDate = appointment.AppointmentDate
+                datePicker.minimumDate = appointment.getDate()
             }else{
                 datePicker.minimumDate = Date.init()
             }
@@ -35,9 +37,26 @@ class MaintenanceViewController: AppBaseController {
         showLoader()
         //TODO - Call service
         dismissLoader({self.showInfoAlert(ConstantUtil.SuccessAppointmentSave)})
+        delegate?.onUpdateSuccess()
         dismiss(animated: true)
     }
     @IBAction func actionBtnCancel(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+    @IBAction func actionBtnLocation(_ sender: Any) {
+        let viewController:LocationSelectionViewController = getViewController("Appointment", identifier: "LocationSelectionViewController")
+        viewController.delegate = self
+        goTo(viewController)
+    }
+}
+
+extension MaintenanceViewController : LocationProtocol{
+    func onSelect(_ location: String) {
+        print("UI => [Select Location] => SUCCESS")
+        SelectedAppointment?.Place = location
+        actionBtnLocation.setTitle(location, for: .normal)
+    }
+    
+    
 }
