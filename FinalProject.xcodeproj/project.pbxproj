@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		0A05577424DFB7360020EAC7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A05577324DFB7360020EAC7 /* Home.storyboard */; };
 		0A05577624DFCE2E0020EAC7 /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A05577524DFCE2E0020EAC7 /* TabViewController.swift */; };
+		0A30F81824EB71E800802BC3 /* RealmSwiftHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F81724EB71E800802BC3 /* RealmSwiftHelper.swift */; };
+		0A30F81A24EB819300802BC3 /* AppointmentObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F81924EB819300802BC3 /* AppointmentObject.swift */; };
+		0A30F81F24EBA60C00802BC3 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F81E24EBA60C00802BC3 /* LoginViewModel.swift */; };
+		0A30F82124EBA61500802BC3 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82024EBA61500802BC3 /* CreateUserViewModel.swift */; };
+		0A30F82324EBA62500802BC3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82224EBA62500802BC3 /* HomeViewModel.swift */; };
+		0A30F82524EBA63000802BC3 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82424EBA63000802BC3 /* ChangePasswordViewModel.swift */; };
+		0A30F82724EBA63700802BC3 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82624EBA63700802BC3 /* HistoryViewModel.swift */; };
+		0A30F82924EBA63E00802BC3 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82824EBA63E00802BC3 /* SettingsViewModel.swift */; };
+		0A30F82B24EBA64B00802BC3 /* AppointmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82A24EBA64B00802BC3 /* AppointmentViewModel.swift */; };
+		0A30F82D24EBA65800802BC3 /* MaintenanceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82C24EBA65800802BC3 /* MaintenanceViewModel.swift */; };
+		0A30F82F24EBA65F00802BC3 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F82E24EBA65F00802BC3 /* LocationViewModel.swift */; };
+		0A30F83124EBA7CA00802BC3 /* ViewModelValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A30F83024EBA7CA00802BC3 /* ViewModelValidation.swift */; };
 		0A3BA7C724E2451200ED0971 /* AppBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BA7C624E2451200ED0971 /* AppBaseViewController.swift */; };
 		0A3BA7C924E245F500ED0971 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BA7C824E245F500ED0971 /* HomeViewController.swift */; };
 		0A3BA7CB24E24C2D00ED0971 /* CreateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3BA7CA24E24C2D00ED0971 /* CreateUserViewController.swift */; };
@@ -55,6 +67,18 @@
 /* Begin PBXFileReference section */
 		0A05577324DFB7360020EAC7 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0A05577524DFCE2E0020EAC7 /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
+		0A30F81724EB71E800802BC3 /* RealmSwiftHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSwiftHelper.swift; sourceTree = "<group>"; };
+		0A30F81924EB819300802BC3 /* AppointmentObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentObject.swift; sourceTree = "<group>"; };
+		0A30F81E24EBA60C00802BC3 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		0A30F82024EBA61500802BC3 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
+		0A30F82224EBA62500802BC3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		0A30F82424EBA63000802BC3 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		0A30F82624EBA63700802BC3 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		0A30F82824EBA63E00802BC3 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		0A30F82A24EBA64B00802BC3 /* AppointmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewModel.swift; sourceTree = "<group>"; };
+		0A30F82C24EBA65800802BC3 /* MaintenanceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewModel.swift; sourceTree = "<group>"; };
+		0A30F82E24EBA65F00802BC3 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		0A30F83024EBA7CA00802BC3 /* ViewModelValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelValidation.swift; sourceTree = "<group>"; };
 		0A3BA7C624E2451200ED0971 /* AppBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBaseViewController.swift; sourceTree = "<group>"; };
 		0A3BA7C824E245F500ED0971 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0A3BA7CA24E24C2D00ED0971 /* CreateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewController.swift; sourceTree = "<group>"; };
@@ -129,16 +153,55 @@
 			isa = PBXGroup;
 			children = (
 				0AE5D01F24E3B0320008D328 /* General */,
-				0AE5D01C24E3AFA20008D328 /* Appointment */,
-				0AE5D01B24E3AF9C0008D328 /* Home */,
 				0AE5D01A24E3AF970008D328 /* Main */,
+				0AE5D01B24E3AF9C0008D328 /* Home */,
+				0AE5D01C24E3AFA20008D328 /* Appointment */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0A30F81624EB71C200802BC3 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				0A30F81724EB71E800802BC3 /* RealmSwiftHelper.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		0A30F81B24EBA5AB00802BC3 /* Appointment */ = {
+			isa = PBXGroup;
+			children = (
+				0A30F82A24EBA64B00802BC3 /* AppointmentViewModel.swift */,
+				0A30F82C24EBA65800802BC3 /* MaintenanceViewModel.swift */,
+				0A30F82E24EBA65F00802BC3 /* LocationViewModel.swift */,
+			);
+			path = Appointment;
+			sourceTree = "<group>";
+		};
+		0A30F81C24EBA5B200802BC3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0A30F81E24EBA60C00802BC3 /* LoginViewModel.swift */,
+				0A30F82024EBA61500802BC3 /* CreateUserViewModel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0A30F81D24EBA5B700802BC3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0A30F82224EBA62500802BC3 /* HomeViewModel.swift */,
+				0A30F82424EBA63000802BC3 /* ChangePasswordViewModel.swift */,
+				0A30F82624EBA63700802BC3 /* HistoryViewModel.swift */,
+				0A30F82824EBA63E00802BC3 /* SettingsViewModel.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		0A3BA7D224E25D5600ED0971 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0AABEC0D24E796DD0063B5A3 /* Repository */,
 				0AA58D1C24E8FD1A006DFEB0 /* Entity */,
 				0AA58D1124E8F229006DFEB0 /* Protocol */,
 				0AABEC0A24E780AF0063B5A3 /* Data */,
@@ -178,7 +241,6 @@
 		0A49CB5B24DEE8AE008BD762 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
-				0AABEC0D24E796DD0063B5A3 /* Repository */,
 				0A3BA7D224E25D5600ED0971 /* Model */,
 				0AA58D1D24E90232006DFEB0 /* ViewModel */,
 				0A05577024DF9EB50020EAC7 /* ViewController */,
@@ -223,6 +285,8 @@
 				0A864F3524E3CA56000A79BB /* Appointment.swift */,
 				0A71274E24E2627F008B2E70 /* User.swift */,
 				0AA58D0724E8D92B006DFEB0 /* MedicalHistory.swift */,
+				0A30F81924EB819300802BC3 /* AppointmentObject.swift */,
+				0A30F83024EBA7CA00802BC3 /* ViewModelValidation.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -230,6 +294,9 @@
 		0AA58D1D24E90232006DFEB0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A30F81C24EBA5B200802BC3 /* Main */,
+				0A30F81D24EBA5B700802BC3 /* Home */,
+				0A30F81B24EBA5AB00802BC3 /* Appointment */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -237,8 +304,8 @@
 		0AABEC0A24E780AF0063B5A3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0A30F81624EB71C200802BC3 /* Storage */,
 				0AABEC1224E7AB8D0063B5A3 /* Network */,
-				0AABEC1524E7AF2A0063B5A3 /* Response */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -256,6 +323,7 @@
 		0AABEC1224E7AB8D0063B5A3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0AABEC1524E7AF2A0063B5A3 /* Response */,
 				0AABEC0B24E780C60063B5A3 /* NetworkHelper.swift */,
 				0AABEC1324E7ABB90063B5A3 /* NetworkEndpoint.swift */,
 			);
@@ -444,10 +512,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AABEC0C24E780C60063B5A3 /* NetworkHelper.swift in Sources */,
+				0A30F82D24EBA65800802BC3 /* MaintenanceViewModel.swift in Sources */,
+				0A30F82524EBA63000802BC3 /* ChangePasswordViewModel.swift in Sources */,
 				0AA58D1524E8F258006DFEB0 /* AppointmentProtocol.swift in Sources */,
 				0A05577624DFCE2E0020EAC7 /* TabViewController.swift in Sources */,
 				0A71275224E26B47008B2E70 /* ValidateUtil.swift in Sources */,
 				0A864F3424E3C7EB000A79BB /* MaintenanceViewController.swift in Sources */,
+				0A30F82F24EBA65F00802BC3 /* LocationViewModel.swift in Sources */,
 				0A3BA7CD24E24C3700ED0971 /* ChangePasswordViewController.swift in Sources */,
 				0A864F3224E3BBA6000A79BB /* AppointmentCell.swift in Sources */,
 				0A49CB6124DEE8AE008BD762 /* LoginViewController.swift in Sources */,
@@ -458,10 +529,12 @@
 				0A49CB5D24DEE8AE008BD762 /* AppDelegate.swift in Sources */,
 				0AA58D1724E8F264006DFEB0 /* UserProtocol.swift in Sources */,
 				0A5B4F1E24E84B55009E19BB /* BaseResponse.swift in Sources */,
+				0A30F81824EB71E800802BC3 /* RealmSwiftHelper.swift in Sources */,
 				0AA58D0624E8D867006DFEB0 /* MedicalRepository.swift in Sources */,
 				0A3BA7CB24E24C2D00ED0971 /* CreateUserViewController.swift in Sources */,
 				0A3BA7C724E2451200ED0971 /* AppBaseViewController.swift in Sources */,
 				0A864F3624E3CA56000A79BB /* Appointment.swift in Sources */,
+				0A30F83124EBA7CA00802BC3 /* ViewModelValidation.swift in Sources */,
 				0AE5D01E24E3AFEA0008D328 /* AppointmentViewController.swift in Sources */,
 				0AABEC1424E7ABB90063B5A3 /* NetworkEndpoint.swift in Sources */,
 				0AA58D1B24E8F277006DFEB0 /* MedicalProtocol.swift in Sources */,
@@ -470,14 +543,21 @@
 				0AA58D0C24E8E196006DFEB0 /* FormatUtil.swift in Sources */,
 				0AABEC1724E7AF390063B5A3 /* BaseDataResponse.swift in Sources */,
 				0AA58D0824E8D92B006DFEB0 /* MedicalHistory.swift in Sources */,
+				0A30F81F24EBA60C00802BC3 /* LoginViewModel.swift in Sources */,
 				0A3BA7CF24E24C4300ED0971 /* HistoryViewController.swift in Sources */,
 				0AE5D01724E3A23F0008D328 /* ImageUtil.swift in Sources */,
 				0A71274F24E2627F008B2E70 /* User.swift in Sources */,
 				0AA58D1324E8F244006DFEB0 /* LocationProtocol.swift in Sources */,
 				0A49CB5F24DEE8AE008BD762 /* SceneDelegate.swift in Sources */,
+				0A30F82924EBA63E00802BC3 /* SettingsViewModel.swift in Sources */,
+				0A30F82724EBA63700802BC3 /* HistoryViewModel.swift in Sources */,
 				0AABEC0F24E796F00063B5A3 /* UserRepository.swift in Sources */,
 				0A71275424E272E9008B2E70 /* ConstantUtil.swift in Sources */,
 				0A3BA7C924E245F500ED0971 /* HomeViewController.swift in Sources */,
+				0A30F82324EBA62500802BC3 /* HomeViewModel.swift in Sources */,
+				0A30F81A24EB819300802BC3 /* AppointmentObject.swift in Sources */,
+				0A30F82B24EBA64B00802BC3 /* AppointmentViewModel.swift in Sources */,
+				0A30F82124EBA61500802BC3 /* CreateUserViewModel.swift in Sources */,
 				0AA58D1024E8E9BF006DFEB0 /* LocationSelectionViewController.swift in Sources */,
 				0A3BA7D624E25D7E00ED0971 /* HistoryCell.swift in Sources */,
 			);

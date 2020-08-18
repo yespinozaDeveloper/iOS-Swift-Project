@@ -8,11 +8,27 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-struct Appointment : Codable{
+class Appointment : Object {
+    var User:String
     var AppointmentDate:String
     var Place:String
     var Reason:String?
+    
+    init(_ user:String, date:String, place:String, reason:String?){
+        self.User = user
+        self.AppointmentDate = date
+        self.Place = place
+        self.Reason = reason
+    }
+    
+    required init() {
+        self.User = ""
+        self.AppointmentDate = ""
+        self.Place = ""
+        self.Reason = nil
+    }
     
     func getDate() -> Date{
         let dateFormatter = DateFormatter()

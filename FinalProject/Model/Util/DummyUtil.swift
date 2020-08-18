@@ -8,7 +8,7 @@
 import Foundation
 
 class DummyUtil{
-    static var IsDummyEnabled:Bool = true
+    static var IsDummyEnabled:Bool = false
     
     static func getDummyResponse(_ action:String) -> String{
         var response:String

@@ -13,7 +13,8 @@ class HomeViewController : AppBaseController{
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var imgProfile: UIImageView!
     
-    override func viewDidLoad() {        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         imgProfile.layer.borderWidth = 1.0
         imgProfile.layer.masksToBounds = false
         imgProfile.layer.borderColor = UIColor.white.cgColor

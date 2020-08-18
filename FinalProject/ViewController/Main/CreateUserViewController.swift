@@ -13,53 +13,16 @@ class CreateUserViewController: AppBaseController {
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtPassword2: UITextField!
+    var viewModel:CreateUserViewModel!
     
-    @IBAction func actionBtnCreate(_ sender: Any) {
-        //TODO - Crear lógica de Cambiar Contraseña
-        var title:String?
-        var message:String = ""
-        if txtUsername.text == ""
-        {
-            message = ConstantUtil.UserRequiredMessage
-        }
-        else if txtEmail.text == ""
-        {
-            message = ConstantUtil.EmailRequiredMessage
-           
-        }
-        else if txtPassword.text == ""
-        {
-            message = ConstantUtil.PasswordRequiredMessage
-           
-        }
-        else if txtPassword2.text == ""
-        {
-            message = ConstantUtil.ConfirmPasswordRequiredMessage
-           
-        }
-        else if txtPassword.text != txtPassword2.text
-        {
-            title = ConstantUtil.PasswordNotMatchTittle
-            message = ConstantUtil.PasswordNotMatchMessage
-        }
-        else if !ValidateUtil.isValidEmail(txtEmail.text!){
-            title = ConstantUtil.WrongEmailTittle
-            message = ConstantUtil.WrongEmailMessage
-        }
-        
-        if message != ""
-        {
-            showInfoAlert(title, message:message)
-        }
-        else{
-            createUser(userName: txtUsername.text, password: txtPassword.text, email: txtEmail.text)
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel = CreateUserViewModel.init()
     }
     
-    func createUser(userName: String?, password: String?, email: String?) {
+    @IBAction func actionBtnCreate(_ sender: Any) {
         print("UI => [Create User]")
-        showLoader()
-        UserRepository.create(userName, password: password, email: email, userProtocol: self)
+        viewModel.CreateUserValidate(txtUsername.text, email: txtEmail.text, password: txtPassword.text, confirmPassword: txtPassword2.text, _protocol: self)
     }
     
     func clearForm(){
@@ -71,6 +34,11 @@ class CreateUserViewController: AppBaseController {
 }
 
 extension CreateUserViewController:UserProtocol{
+    func SaveUser(_ userName: String, email: String, password: String) {
+        showLoader()
+        viewModel.CreateUserApply(userName, email: email, password: password, _protocol:self)
+    }
+    
     
     func onSuccess(_ user: User?) {
         print("UI => [Create User] => SUCCESS")
@@ -82,9 +50,12 @@ extension CreateUserViewController:UserProtocol{
     
     func onError() {
         print("UI => [Create User] => ERROR")
-        dismissLoader({
-            self.showDefaultError()
-        })
+        dismissLoader({ self.showDefaultError() })
+    }
+    
+    func onError(_ title: String?, message: String?) {
+        print("UI => [Create User] => ERROR")
+        dismissLoader({ self.showErrorAlert(title, message: message) })
     }
     
 }

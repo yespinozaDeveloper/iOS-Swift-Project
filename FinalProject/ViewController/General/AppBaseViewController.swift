@@ -116,21 +116,37 @@ class AppBaseController: UIViewController {
         CacheDataUtil.UserCache = user
     }
     
+    static func getCurrentUser() -> User{
+        return AppBaseController.currentUser!
+    }
+    
     func getCurrentUser() -> User{
         return AppBaseController.currentUser!
     }
     
     func showDefaultError(){
-        showInfoAlert(ConstantUtil.ErrorDefaultTitle, message: ConstantUtil.ErrorDefaultMessage)
+        showInfoAlert(ConstantUtil.ErrorDefaultTitle, message: ConstantUtil.ErrorDefaultMessage, acceptHandler: nil)
     }
     
     func showInfoAlert(_ message:String){
-        showInfoAlert(nil, message: message)
+        showInfoAlert(nil, message: message, acceptHandler: nil)
+    }
+    
+    func showInfoAlert(_ message:String, acceptHandler: ((UIAlertAction) -> Void)?){
+        showInfoAlert(nil, message: message, acceptHandler:acceptHandler)
     }
     
     func showInfoAlert(_ title:String?, message:String){
+        showInfoAlert(title, message: message, acceptHandler:nil)
+    }
+    
+    func showErrorAlert(_ title:String?, message:String?){
+        showInfoAlert(title, message: message ?? ConstantUtil.ErrorDefaultMessage, acceptHandler:nil)
+    }
+    
+    func showInfoAlert(_ title:String?, message:String, acceptHandler: ((UIAlertAction) -> Void)?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: ConstantUtil.AcceptOption, style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: ConstantUtil.AcceptOption, style: .default, handler: acceptHandler))
         self.present(alert, animated: true)
     }
     

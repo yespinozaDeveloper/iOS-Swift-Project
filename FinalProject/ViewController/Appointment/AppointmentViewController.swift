@@ -51,7 +51,7 @@ class AppointmentViewController : AppBaseController{
     func deleteAppointment(_ indexRow:Int){
         self.indexRow = indexRow
         showLoader()
-        AppointmentRepository.delete(getCurrentUser().UserName, appointmentDate: self.appointmentList[indexRow].AppointmentDate, _protocol: self)
+        AppointmentRepository.delete(getCurrentUser().UserName, date: self.appointmentList[indexRow].getDate(), _protocol: self)
     }
 }
 
@@ -63,7 +63,7 @@ extension AppointmentViewController: AppointmentProtocol{
     func onSuccess() {
         print("UI => [Delete Appointment] => SUCCESS")
         dismissLoader({
-            self.showInfoAlert(ConstantUtil.SuccessAppointmentDelete)
+            //self.showInfoAlert(ConstantUtil.SuccessAppointmentDelete)
             self.appointmentList.remove(at: self.indexRow)
             self.indexRow = -1
             self.refresh()
@@ -83,7 +83,10 @@ extension AppointmentViewController: AppointmentProtocol{
         dismissLoader({self.showDefaultError()})
     }
     
-    
+    func onError(_ message:String) {
+        print("UI => [Appointment] => Handled Error")
+        dismissLoader({self.showInfoAlert(ConstantUtil.ErrorDefaultTitle, message:message)})
+    }
 }
 
 

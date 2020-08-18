@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SettingsViewController: AppBaseController {
     
@@ -14,7 +15,12 @@ class SettingsViewController: AppBaseController {
     @IBOutlet weak var imgProfile: UIImageView!
     var ImageHasChanged:Bool!
     var IsTakingPhoto:Bool!
+    var viewModel:SettingsViewModel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel = SettingsViewModel.init()
+    }
     override func viewDidAppear(_ animated: Bool) {
         if IsTakingPhoto == nil {
             self.IsTakingPhoto = false
@@ -38,27 +44,8 @@ class SettingsViewController: AppBaseController {
     }
     
     @IBAction func actionBtnSave(_ sender: Any) {
-        var title:String?
-        var message:String = ""
-        if txtEmail.text == ""
-        {
-            message = ConstantUtil.EmailRequiredMessage
-        }
-        else if !ValidateUtil.isValidEmail(txtEmail.text!){
-            title = ConstantUtil.WrongEmailTittle
-            message = ConstantUtil.WrongEmailMessage
-        }
-        else if !ImageHasChanged && txtEmail.text == getCurrentUser().Email {
-            title = ConstantUtil.NoChangesTittle
-            message = ConstantUtil.NoChangesMessage
-        }
-        if message != ""
-        {
-            showInfoAlert(title, message: message)
-        }
-        else{
-            uploadUser()
-        }
+        print("UI => [Update User]")
+        viewModel.UpdateUserValidate(txtEmail.text, imageHasChanged: ImageHasChanged, image: imgProfile.image, _protocol: self)
     }
     
     func openGallery(){
@@ -72,7 +59,22 @@ class SettingsViewController: AppBaseController {
     
     func openCamera(){
         print("UI => Open Camera...")
-        //TODO - Fix camera problem
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            self.showCamera()
+        }
+        else if AVCaptureDevice.authorizationStatus(for: .video) ==  .denied{
+            self.showInfoAlert(ConstantUtil.ErrorDefaultTitle, message: ConstantUtil.CameraForbidPermissonMessage)            
+        }else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    //TODO - revisar problemas con camara en el hilo principal
+                    self.showCamera()
+                } 
+            })
+        }
+    }
+    
+    func showCamera(){
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
@@ -84,25 +86,23 @@ class SettingsViewController: AppBaseController {
             showInfoAlert(ConstantUtil.CameraUnavailableTittle, message: ConstantUtil.CameraUnavailableMessage)
         }
     }
-    
-    func uploadUser(){
-        print("UI => [Update User]")
-        showLoader()
-        CacheDataUtil.UserCache = self.getCurrentUser()
-        if let email =  self.txtEmail.text {
-            CacheDataUtil.UserCache.Email = email
-        }
-        if ImageHasChanged{
-            CacheDataUtil.UserCache.setUImage(image: imgProfile.image)
-        }
-        UserRepository.update(CacheDataUtil.UserCache, hasImageChanged: ImageHasChanged, userProtocol: self)
-        
-    }
 }
 
-extension SettingsViewController: UserProtocol{
+extension SettingsViewController: SettingsProtocol{
+    func UpdateUser(_ user:User, imageHasChanged:Bool) {
+        showLoader()
+        viewModel.UpdateUserApply(user, imageHasChanged: imageHasChanged, _protocol: self)
+    }
+    
+    
+    func onError(_ title: String?, message: String?) {
+        print("UI => [Update User] => ERROR")
+        CacheDataUtil.UserCache = getCurrentUser()
+        dismissLoader({self.showErrorAlert(title, message: message)})
+    }
+    
     func onSuccess(_ user: User?) {
-            print("UI => [Update User] => SUCCESS")
+        print("UI => [Update User] => SUCCESS")
         dismissLoader({
             guard let user = user else{
                 self.showDefaultError()
@@ -110,6 +110,8 @@ extension SettingsViewController: UserProtocol{
             }
             self.setCurrentUser(user)
             self.showInfoAlert(ConstantUtil.SuccessUserUpdate)
+            self.ImageHasChanged = false
+            self.IsTakingPhoto = false
         })
     }
     

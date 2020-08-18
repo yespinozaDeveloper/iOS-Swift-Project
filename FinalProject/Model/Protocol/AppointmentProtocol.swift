@@ -9,4 +9,11 @@ protocol AppointmentProtocol {
     func onSuccess() -> Void
     func onUpdateSuccess() -> Void
     func onError() -> Void
+    func onError(_ message:String) -> Void
+}
+
+protocol SaveAppointmentProtocol {
+    func onSuccess() -> Void
+    func onError(_ message:String) -> Void
+    func onError() -> Void
 }

@@ -12,52 +12,25 @@ class ChangePasswordViewController : AppBaseController {
     @IBOutlet weak var txtCurrentPassword: UITextField!
     @IBOutlet weak var txtNewPassword: UITextField!
     @IBOutlet weak var txtNewPassword2: UITextField!
+    var viewModel:ChangePasswordViewModel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel = ChangePasswordViewModel.init()
+    }
     
     @IBAction func actionChangePassword(_ sender: Any) {
-        var tittle:String?
-        var message:String = ""
-        if txtCurrentPassword.text == ""
-        {
-            message = ConstantUtil.CurrentPasswordRequiredMessage
-        }
-        else if txtNewPassword.text == ""
-        {
-            message = ConstantUtil.NewPasswordRequiredMessage
-           
-        }
-        else if txtNewPassword2.text == ""
-        {
-            message = ConstantUtil.ConfirmPasswordRequiredMessage
-           
-        }
-        else if txtNewPassword.text != txtNewPassword2.text
-        {
-            tittle = ConstantUtil.PasswordNotMatchTittle
-            message = ConstantUtil.PasswordNotMatchMessage
-        }
-        else if txtCurrentPassword.text == txtNewPassword.text
-        {
-            tittle = ConstantUtil.SamePasswordTittle
-            message = ConstantUtil.SamePasswordMessage
-        }
-        
-        if message != ""
-        {
-            self.showInfoAlert(tittle, message:message)
-        }
-        else{
-            showConfirmAlert(ConstantUtil.ChangePasswordConfirmationMessage, acceptButton: ConstantUtil.ChangeOption, acceptHandler: {_ in self.changePassword()})
-        }
+        viewModel.ChangePasswordValidate(txtCurrentPassword.text, newPassword: txtNewPassword.text, confirmPassword: txtNewPassword2.text, _protocol:self)
     }
     
     @IBAction func actionCancel(_ sender: Any) {
         dismiss(animated: true)
     }
     
-    func changePassword(){
+    func changePassword(_ password:String, newPassword:String){
         print("UI => [Change Password] => SUCCESS")
         showLoader()
-        UserRepository.changePassword(getCurrentUser().UserName, currentPassword: txtCurrentPassword.text, newPassword: txtNewPassword.text, userProtocol: self)
+        viewModel.ChangePasswordApply(password, newPassword: newPassword, _protocol: self)
     }
     
     func clearForm(){
@@ -67,7 +40,17 @@ class ChangePasswordViewController : AppBaseController {
     }
 }
 
-extension ChangePasswordViewController: UserProtocol{
+extension ChangePasswordViewController: ChangePasswordProtocol{
+    func ChangePassword(_ password:String, newPassword:String) {
+        showConfirmAlert(ConstantUtil.ChangePasswordConfirmationMessage, acceptButton: ConstantUtil.ChangeOption,
+        acceptHandler: {_ in self.changePassword(password, newPassword: newPassword)})
+    }
+    
+    func onError(_ title: String?, message: String?) {
+        print("UI => [Change Password] => ERROR")
+        dismissLoader({self.showErrorAlert(title, message: message)})
+    }
+    
     func onSuccess(_ user: User?) {
         print("UI => [Change Password] => SUCCESS")
         dismissLoader({
@@ -80,6 +63,4 @@ extension ChangePasswordViewController: UserProtocol{
         print("UI => [Change Password] => ERROR")
         dismissLoader({self.showDefaultError()})
     }
-    
-    
 }
