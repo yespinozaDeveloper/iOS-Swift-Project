@@ -24,9 +24,9 @@ class JSonUtil{
     static func decodeResponse<D: Codable>(_ json:String, action:String) -> D? {
         do{
             var jsonResponse:String = json
-            if DummyUtil.IsDummyEnabled{
+            if _DummyResponse.IsDummyEnabled{
                 print("###DUMMY ENABLED###")
-                jsonResponse = DummyUtil.getDummyResponse(action)
+                jsonResponse = _DummyResponse.getDummyResponse(action)
             }
             let jsonData = jsonResponse.data(using: .utf8)!
             let decoder = JSONDecoder()

@@ -19,16 +19,16 @@ class UserRepository{
                                             onSuccess: { (response) in
                                                 
                                                 do{
-                                                    let responseDecoded:BaseDataResponse<User>? = JSonUtil.decodeResponse(response.stringValue, action: action)
+                                                    let responseDecoded:BaseDataResponse<User>? = JSonUtil.decodeResponse(response.rawString() ?? "", action: action)
                                                     guard let responseObject = responseDecoded, responseObject.isSuccessful else {
-                                                        _protocol.onError()
+                                                        _protocol.onError(responseDecoded?.title, message:responseDecoded?.description)
                                                         return
                                                     }
                                                     
                                                     if let user:User = responseObject.data {
                                                         _protocol.onSuccess(user)
-                                                    }else{
-                                                        _protocol.onError()
+                                                    }else {
+                                                        _protocol.onError(responseObject.title, message:responseObject.description)
                                                     }
                                                 }catch{
                                                     _protocol.onError()
@@ -48,9 +48,9 @@ class UserRepository{
                                             onSuccess: { (response) in
                                                 
                                                 do{
-                                                    let responseDecoded:BaseResponse? = JSonUtil.decodeResponse(response.stringValue, action: action)
+                                                    let responseDecoded:BaseResponse? = JSonUtil.decodeResponse(response.rawString() ?? "", action: action)
                                                     guard let responseObject = responseDecoded, responseObject.isSuccessful else {
-                                                        _protocol.onError()
+                                                        _protocol.onError(responseDecoded?.title, message:responseDecoded?.description)
                                                         return
                                                     }
                                                     
@@ -72,9 +72,9 @@ class UserRepository{
                                             onSuccess: { (response) in
                                                 
                                                 do{
-                                                    let responseDecoded:BaseDataResponse<User>? = JSonUtil.decodeResponse(response.stringValue, action: action)
+                                                    let responseDecoded:BaseDataResponse<User>? = JSonUtil.decodeResponse(response.rawString() ?? "", action: action)
                                                     guard let responseObject = responseDecoded, responseObject.isSuccessful else {
-                                                        _protocol.onError()
+                                                        _protocol.onError(responseDecoded?.title, message:responseDecoded?.description)
                                                         return
                                                     }
                                                     
@@ -100,9 +100,9 @@ class UserRepository{
                                             onSuccess: { (response) in
                                                 
                                                 do{
-                                                    let responseDecoded:BaseResponse? = JSonUtil.decodeResponse(response.stringValue, action: action)
+                                                    let responseDecoded:BaseResponse? = JSonUtil.decodeResponse(response.rawString() ?? "", action: action)
                                                     guard let responseObject = responseDecoded, responseObject.isSuccessful else {
-                                                        _protocol.onError()
+                                                        _protocol.onError(responseDecoded?.title, message:responseDecoded?.description)
                                                         return
                                                     }
                                                     

@@ -35,7 +35,7 @@
 		0A49CB6624DEE8B2008BD762 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A49CB6524DEE8B2008BD762 /* Assets.xcassets */; };
 		0A49CB6924DEE8B2008BD762 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A49CB6724DEE8B2008BD762 /* LaunchScreen.storyboard */; };
 		0A5B4F1E24E84B55009E19BB /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B4F1D24E84B55009E19BB /* BaseResponse.swift */; };
-		0A5B4F2024E84E73009E19BB /* DummyUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B4F1F24E84E73009E19BB /* DummyUtil.swift */; };
+		0A5B4F2024E84E73009E19BB /* _DummyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B4F1F24E84E73009E19BB /* _DummyResponse.swift */; };
 		0A5B4F2224E859B3009E19BB /* CacheDataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B4F2124E859B3009E19BB /* CacheDataUtil.swift */; };
 		0A71274F24E2627F008B2E70 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71274E24E2627F008B2E70 /* User.swift */; };
 		0A71275224E26B47008B2E70 /* ValidateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71275124E26B47008B2E70 /* ValidateUtil.swift */; };
@@ -95,7 +95,7 @@
 		0A49CB6824DEE8B2008BD762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A49CB6A24DEE8B2008BD762 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A5B4F1D24E84B55009E19BB /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
-		0A5B4F1F24E84E73009E19BB /* DummyUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyUtil.swift; sourceTree = "<group>"; };
+		0A5B4F1F24E84E73009E19BB /* _DummyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DummyResponse.swift; sourceTree = "<group>"; };
 		0A5B4F2124E859B3009E19BB /* CacheDataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheDataUtil.swift; sourceTree = "<group>"; };
 		0A71274E24E2627F008B2E70 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0A71275124E26B47008B2E70 /* ValidateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateUtil.swift; sourceTree = "<group>"; };
@@ -201,12 +201,11 @@
 		0A3BA7D224E25D5600ED0971 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0AABEC0D24E796DD0063B5A3 /* Repository */,
-				0AA58D1C24E8FD1A006DFEB0 /* Entity */,
-				0AA58D1124E8F229006DFEB0 /* Protocol */,
 				0AABEC0A24E780AF0063B5A3 /* Data */,
+				0AABEC0D24E796DD0063B5A3 /* Repository */,
+				0AA58D1124E8F229006DFEB0 /* Protocol */,
+				0AA58D1C24E8FD1A006DFEB0 /* Entity */,
 				0A71275024E26B2B008B2E70 /* Util */,
-				0A3BA7D324E25D5D00ED0971 /* CustomCell */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -262,7 +261,6 @@
 				0A71275324E272E9008B2E70 /* ConstantUtil.swift */,
 				0AABEC1024E799CD0063B5A3 /* JSonUtil.swift */,
 				0AE5D01624E3A23F0008D328 /* ImageUtil.swift */,
-				0A5B4F1F24E84E73009E19BB /* DummyUtil.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -282,6 +280,7 @@
 		0AA58D1C24E8FD1A006DFEB0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				0A3BA7D324E25D5D00ED0971 /* CustomCell */,
 				0A864F3524E3CA56000A79BB /* Appointment.swift */,
 				0A71274E24E2627F008B2E70 /* User.swift */,
 				0AA58D0724E8D92B006DFEB0 /* MedicalHistory.swift */,
@@ -333,6 +332,7 @@
 		0AABEC1524E7AF2A0063B5A3 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				0A5B4F1F24E84E73009E19BB /* _DummyResponse.swift */,
 				0AABEC1624E7AF390063B5A3 /* BaseDataResponse.swift */,
 				0A5B4F1D24E84B55009E19BB /* BaseResponse.swift */,
 			);
@@ -522,7 +522,7 @@
 				0A3BA7CD24E24C3700ED0971 /* ChangePasswordViewController.swift in Sources */,
 				0A864F3224E3BBA6000A79BB /* AppointmentCell.swift in Sources */,
 				0A49CB6124DEE8AE008BD762 /* LoginViewController.swift in Sources */,
-				0A5B4F2024E84E73009E19BB /* DummyUtil.swift in Sources */,
+				0A5B4F2024E84E73009E19BB /* _DummyResponse.swift in Sources */,
 				0A5B4F2224E859B3009E19BB /* CacheDataUtil.swift in Sources */,
 				0AABEC1124E799CD0063B5A3 /* JSonUtil.swift in Sources */,
 				0A3BA7D124E24C4E00ED0971 /* SettingsViewController.swift in Sources */,

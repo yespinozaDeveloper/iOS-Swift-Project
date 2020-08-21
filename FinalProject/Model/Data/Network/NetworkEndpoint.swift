@@ -9,7 +9,7 @@ import Foundation
 
 struct NetworkEndpoint {
     
-    static let rootAPIURL = "http://demostecno.eastus.cloudapp.azure.com:1000/dev.app.movil/"
+    static let rootAPIURL = "http://demostecno.eastus.cloudapp.azure.com:1011/_tmp-iOS-BKN/"
 
     static let User_Login:String = "User/Login"
     static let User_Create:String = "User/Create"

@@ -12,7 +12,7 @@ class ImageUtil{
     
     static func DecodeBase64Image(imageBase64:String?) -> UIImage?{
         do{
-            if let imageBase64 = imageBase64, let dataDecoded:NSData = NSData(base64Encoded: imageBase64, options: NSData.Base64DecodingOptions(rawValue: 0)){
+            if let imageBase64 = imageBase64, imageBase64 != "", let dataDecoded:NSData = NSData(base64Encoded: imageBase64, options: NSData.Base64DecodingOptions(rawValue: 0)){
                 return UIImage(data: dataDecoded as Data)!
             }else{
                 return nil

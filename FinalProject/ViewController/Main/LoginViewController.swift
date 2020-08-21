@@ -36,8 +36,8 @@ class LoginViewController: AppBaseController {
                 txtPassword.text = passwordRemembered
             }
         }
-        DummyUtil.IsDummyEnabled = UserDefaults.standard.bool(forKey: "IsDummyEnabled")
-        switchDummy.isOn = DummyUtil.IsDummyEnabled
+        _DummyResponse.IsDummyEnabled = UserDefaults.standard.bool(forKey: "IsDummyEnabled")
+        switchDummy.isOn = _DummyResponse.IsDummyEnabled
     }
     
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer)
@@ -61,7 +61,7 @@ class LoginViewController: AppBaseController {
     }
     
     @IBAction func actionDummySwitch(_ sender: UISwitch) {
-        DummyUtil.IsDummyEnabled = sender.isOn
+        _DummyResponse.IsDummyEnabled = sender.isOn
         UserDefaults.standard.set(sender.isOn, forKey: "IsDummyEnabled")
     }
     @IBAction func actionRemberSwitch(_ sender: UISwitch) {
